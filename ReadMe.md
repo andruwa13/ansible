@@ -1,5 +1,5 @@
 [![pipeline status](https://gitlab.com/3_1_3_u/ansible/badges/master/pipeline.svg)](https://gitlab.com/3_1_3_u/ansible/commits/master)
-[![](https://images.microbadger.com/badges/image/313u/ansible.svg)](https://microbadger.com/images/313u/ansible "Get your own image badge on microbadger.com")
+
 # Docker images:
 
 ## Docker Hub: `313u/ansible:latest`
