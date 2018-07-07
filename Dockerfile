@@ -1,6 +1,5 @@
 FROM python:slim
 MAINTAINER Andrew Vityuk andruwa13@me.com>
-ENV VERSION 2.6.1
 
-RUN pip install ansible==${VERSION} && \
+RUN pip install ansible && \
     rm -rf ~/.cache/pip
