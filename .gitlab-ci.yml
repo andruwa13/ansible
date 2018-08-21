@@ -29,8 +29,8 @@ build-master_docker:
   stage: build
   script:
     - docker login -u "$DOCKER_USER" -p "$DOCKER_PASSWORD"
-    - docker build --pull -t 313u/ansible .
-    - docker push 313u/ansible
+    - docker build --pull -t $DOCKER_USER/$CI_PROJECT_NAME .
+    - docker push $DOCKER_USER/$CI_PROJECT_NAME
   only:
     - master
 
@@ -38,7 +38,7 @@ build_docker:
   stage: build
   script:
     - docker login -u "$DOCKER_USER" -p "$DOCKER_PASSWORD"
-    - docker build --pull -t "313u/ansible:$CI_COMMIT_REF_SLUG" .
-    - docker push "313u/ansible:$CI_COMMIT_REF_SLUG"
+    - docker build --pull -t "$DOCKER_USER/$CI_PROJECT_NAME:$CI_COMMIT_REF_SLUG" .
+    - docker push "$DOCKER_USER/$CI_PROJECT_NAME:$CI_COMMIT_REF_SLUG"
   except:
     - master
