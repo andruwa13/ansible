@@ -26,9 +26,11 @@ build_gitlab:
   except:
     - master
 
-
-sonarqube_job:
-  stage: test
-  image: maven:3.3.9-jdk-8-alpine
+sonarqube-reports:
+  stage: analysis
+  image: ciricihq/gitlab-sonar-scanner
+  variables:
+    SONAR_URL: $SONAR_URL
+    SONAR_ANALYSIS_MODE: publish
   script:
-    - mvn --batch-mode verify sonar:sonar -Dsonar.projectKey=$SONAR_PROJECTKEY  -Dsonar.organization=$SONAR_ORGANIZATION -Dsonar.sources=. -Dsonar.host.url=$SONAR_URL  -Dsonar.login=$SONAR_LOGIN 
+  - gitlab-sonar-scanner
