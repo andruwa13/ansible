@@ -42,3 +42,12 @@ build_docker:
     - docker push "$DOCKER_USER/$CI_PROJECT_NAME:$CI_COMMIT_REF_SLUG"
   except:
     - master
+
+
+sonarqube_master_job:
+  stage: test
+  only:
+    - master
+  image: maven:3.3.9-jdk-8-alpine
+  script:
+    - mvn --batch-mode verify sonar:sonar -Dsonar.projectKey=$SONAR_PROJECTKEY  -Dsonar.organization=$SONAR_ORGANIZATION -Dsonar.sources=. -Dsonar.host.url=$SONAR_URL  -Dsonar.login=$SONAR_LOGIN 
